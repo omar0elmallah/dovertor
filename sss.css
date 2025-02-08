@@ -1,89 +1,91 @@
+/* تنسيقات الخلفية والخطوط العامة */
 body {
-    background-size: cover;
-    background-repeat: repeat-y;
-    background-position: center;
-    background-attachment: fixed;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
-    align-items: center;
-    height: 1vh;
-    margin: 0;
-    background: linear-gradient(-45deg,#ff3300,#ff3300,#ff3f0f,#fd4a1d,#ff5a31,#ff6640,#ff7451,#ff7957, #fd8669,#ff7e5f, #feb47b,#f8b079, #f59f89, #f7a692, #f3aa98,#f3b3a4,#f8d1c8,#f7e0db,#fff2ee,#ededed);
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(-45deg, #ff3300, #ff3f0f, #fd4a1d, #ff5a31, #ff6640, #ff7451, #ff7957, #fd8669, #ff7e5f, #feb47b, #f8b079, #f59f89, #f7a692, #f3aa98, #f3b3a4, #f8d1c8, #f7e0db, #fff2ee, #ededed);
     background-size: 200% 200%;
     animation: gradientBackground 30s linear infinite alternate;
-    font-family: Arial, Helvetica, sans-serif;
-    
-}
-@keyframes gradientBackground {
+  }
+  
+  @keyframes gradientBackground {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
-
-
-.container {
+  }
+  
+  /* تأثير النص النيون على العناوين والشعار */
+  .neon-text {
+    color: #fff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #a2a2a2,
+      0 0 30px #a2a2a2,
+      0 0 40px #a2a2a2,
+      0 0 55px #a2a2a2,
+      0 0 75px #a2a2a2;
+  }
+  
+  /* تأثير ظهور عند التمرير */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .animate-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* تنسيق المحتوى الرئيسي */
+  .container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* توسيط العناصر أفقيًا */
+    align-items: center;
     min-height: 100vh;
-}
-
-@keyframes gradient {
-    0% { background-position: left center; }
-    50% { background-position: right center; }
-    100% { background-position: left center; }
-}
-.logo {
-    margin-top: 50px; /* التحكم بموقعها عموديًا */
+    padding-top: 100px;
+  }
+  
+  .app-logo {
+    margin-top: 50px;
     margin-bottom: 20px;
-}
-
-.heading {
+  }
+  
+  .heading {
     text-align: center;
-    color: #000000;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 50px;
     margin: 10px 0;
-}
-
-
+  }
   
-.button {
+  /* تنسيقات زر التحميل */
+  .button {
     position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-
-    
-}
+    text-align: center;
+    color: #000;
+    font-size: 50px;
+    margin: 350px 0;
+  }
   
-.button a {
+  .button a {
     display: block;
     height: 50px;
     width: 200px;
-    background: #00b7ea;
+    background: linear-gradient(to bottom, #00b7ea 0%, #009ec3 100%);
     color: white;
     font: 17px/50px Helvetica, Verdana, sans-serif;
     text-decoration: none;
-    text-align: center;
     text-transform: uppercase;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
     border-radius: 10px;
-    -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    -moz-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
     box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00b7ea), color-stop(100%,#009ec3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #00b7ea 0%,#009ec3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #00b7ea 0%,#009ec3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #00b7ea 0%,#009ec3 100%); /* IE10+ */
-    background: linear-gradient(top, #00b7ea 0%,#009ec3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 ); /* IE6-9 */
-}
+    transition: background 0.3s ease;
+  }
   
+  .button a:active {
+    background: linear-gradient(to bottom, #00b7ea 36%, #009ec3 100%);
+  }
+  
+  /* تنسيق الفقرات داخل الزر */
   p {
     background: #222;
     display: block;
@@ -95,169 +97,196 @@ body {
     color: #fff;
     position: absolute;
     z-index: -1;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
-    -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    -moz-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
     box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
-}
+  }
   
-.button a, p {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 30px;
-  
-    -webkit-box-shadow: 2px 4px 8px 8px rgba(0,0,0,0.2);
-    -moz-box-shadow: 2px 4px 8px 8px rgba(0,0,0,0.2);
-    box-shadow: 2px 4px 8px 8px rgba(0,0,0,0.2);      
-}
-  
-.button:hover .top {
+  /* تأثيرات عند التمرير على الزر */
+  .button:hover .top {
     margin: -80px 0 0 10px;
     line-height: 35px;
-}
-   
-.button:hover .bottom {
-    margin: -10px 0 0 10px;
-    
-}
+  }
   
-  /*Adjust Gradient*/
-.button a:active {
-    background: #00b7ea; 
-    background: -moz-linear-gradient(top,  #00b7ea 36%, #009ec3 100%); 
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(36%,#00b7ea), color-stop(100%,#009ec3)); 
-    background: -webkit-linear-gradient(top,  #00b7ea 36%,#009ec3 100%); 
-    background: -o-linear-gradient(top,  #00b7ea 36%,#009ec3 100%); 
-    background: -ms-linear-gradient(top,  #00b7ea 36%,#009ec3 100%); 
-    background: linear-gradient(top,  #00b7ea 36%,#009ec3 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 ); 
-}
-   
-  /*Pulls in Wings*/
-.button:active .bottom {
-    margin: -20px 0 0 10px;
-}
-   
-  .button:active .top {
-    margin: -70px 0 0 10px;
-}
-
-.top-bar {
+  .button:hover .bottom {
+    margin: -10px 0 0 10px;
+  }
+  
+  /* تنسيق الشريط العلوي */
+  .top-bar {
     height: 70px;
-    background-color: #ffffff;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* توسيط العناصر أفقيًا */
-    padding: 0 20px;
-    transition: box-shadow 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
     background: linear-gradient(90deg, #ff0000, #ff8c00, #fffb00, #77ff00, #009dff, #0000ff);
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-    transition: transform 0.3s, color 0.3s, text-shadow 0.3s, background-position 0.5s;
     background-size: 200% 200%;
     animation: gradient 5s ease infinite;
-}
-
-.shortcut-buttons {
     display: flex;
-    gap: 15px; /* مسافة بين الأزرار */
-}
-
-.shortcut-button {
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: left center; }
+    50% { background-position: right center; }
+    100% { background-position: left center; }
+  }
+  
+  /* قائمة الأزرار */
+  .shortcut-buttons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .shortcut-button {
     padding: 10px 20px;
-    background-color: none;
-    color: #000000;
+    background-color: transparent;
+    color: #000;
     text-decoration: none;
     font-size: 25px; 
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    background-position: center center;
-}
-
-.shortcut-button:hover {
+  }
+  
+  .shortcut-button:hover {
     background-color: #ededed;
-    color: #000000;
     transform: scale(1.1);
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    background-position: right center;
-    text-underline-offset: 3px;
-}
-
-.shortcut-button:active {
+  }
+  
+  .shortcut-button:active {
     transform: scale(0.96);
-}
-
-/* تنسيق محتوى الشعار */
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-}
-
-/* تنسيق محتوى الشعار */
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-}
-
-.ticker-wrapper {
+  }
+  
+  /* تنسيق الشعار داخل الشريط العلوي */
+  .top-bar .logo {
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .top-bar .logo:hover {
+    transform: scale(1.1);
+  }
+  
+  /* تنسيق شريط التمرير (Ticker) */
+  .ticker-wrapper {
     position: relative;
     background: linear-gradient(90deg, #3d3d3d, #1a1a1a);
     overflow: hidden;
     height: 100px;
     width: 80%;
-    margin: 10px auto;
-
+    margin: 20px auto;
     border-radius: 50px;
     display: flex;
     align-items: center;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     animation: ticker-bg 10s linear infinite;
-}
-
-
-@keyframes ticker-bg {
+  }
+  
+  @keyframes ticker-bg {
     0% { background-position: left center; }
     50% { background-position: right center; }
     100% { background-position: left center; }
-}
-
-.ticker {
+  }
+  
+  .ticker {
     display: flex;
     animation: scroll 20s linear infinite;
     white-space: nowrap;
-}
-
-.ticker img {
+  }
+  
+  .ticker img {
     max-height: 60px;
     margin: 0 20px;
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
     transition: transform 0.3s, filter 0.3s;
-}
-
-.ticker img:hover {
+  }
+  
+  .ticker img:hover {
     transform: scale(1.2);
     filter: drop-shadow(5px 5px 5px rgba(255, 255, 255, 0.5));
-}
-
-@keyframes scroll {
+  }
+  
+  @keyframes scroll {
     from {
-        transform: translateX(0%);
+      transform: translateX(0);
     }
     to {
-        transform: translateX(-50%);
+      transform: translateX(-50%);
     }
+  }
+  
+  /* أكواد قائمة الهامبورجر */
+  #menu-toggle {
+    display: none;
+  }
+  
+  .hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+    color: #000;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .shortcut-buttons {
+      display: none;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      flex-direction: column;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      border-radius: 5px;
+      padding: 10px;
+      z-index: 100;
+    }
+    .hamburger {
+      display: block;
+    }
+    #menu-toggle:checked + .hamburger + .shortcut-buttons {
+      display: flex;
+    }
+  }
+  
+  /* تنسيق رمز الـ QR */
+  /* الوضع الافتراضي: */
+/* تنسيق رمز الـ QR - الوضع الافتراضي على الشاشات الكبيرة */
+/* تنسيق رمز الـ QR - الوضع الافتراضي على الشاشات الكبيرة */
+.qr {
+  position: absolute;
+  top: 200px;
+  left: 10px;
+  transition: all 0.5s ease;
 }
+
+/* استهداف الصورة داخل عنصر QR */
+.qr img {
+  width: 150px;  /* الحجم الافتراضي على الشاشات الكبيرة */
+  height: auto;
+}
+
+/* عند الشاشات الصغيرة (أقل من 768px) نقوم بتعديل حجم رمز الـ QR */
+@media only screen and (max-width: 768px) {
+  .qr {
+    top: 150px;  /* تعديل الموضع إذا لزم الأمر */
+    left: 10px;  /* يبقى في الجهة اليسار */
+  }
+  /* تغيير حجم الصورة داخل الـ QR */
+  .qr img {
+    width: 80px !important; /* استخدام !important لضمان تطبيق القيمة */
+    height: auto;
+  }
+}
+
+  
+  
+  /* تنسيق معلومات الإصدار */
+  .info {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
