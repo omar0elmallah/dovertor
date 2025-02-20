@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(-45deg, #ff3300, #ff3f0f, #fd4a1d, #ff5a31, #ff6640, #ff7451, #ff7957, #fd8669, #ff7e5f, #feb47b, #f8b079, #f59f89, #f7a692, #f3aa98, #f3b3a4, #f8d1c8, #f7e0db, #fff2ee, #ededed);
+    background: linear-gradient(-45deg, #4B5945,#66785F,#91AC8F,#B2C9AD);
     background-size: 200% 200%;
     animation: gradientBackground 30s linear infinite alternate;
   }
@@ -115,7 +115,7 @@ body {
   /* تنسيق الشريط العلوي */
   .top-bar {
     height: 70px;
-    background: linear-gradient(90deg, #ff0000, #ff8c00, #fffb00, #77ff00, #009dff, #0000ff);
+    background: none;
     background-size: 200% 200%;
     animation: gradient 5s ease infinite;
     display: flex;
