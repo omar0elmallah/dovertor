@@ -1,292 +1,549 @@
-/* تنسيقات الخلفية والخطوط العامة */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(-45deg, #4B5945,#66785F,#91AC8F,#B2C9AD);
-    background-size: 200% 200%;
-    animation: gradientBackground 30s linear infinite alternate;
-  }
-  
-  @keyframes gradientBackground {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  /* تأثير النص النيون على العناوين والشعار */
-  .neon-text {
-    color: #fff;
-    text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px #a2a2a2,
-      0 0 30px #a2a2a2,
-      0 0 40px #a2a2a2,
-      0 0 55px #a2a2a2,
-      0 0 75px #a2a2a2;
-  }
-  
-  /* تأثير ظهور عند التمرير */
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  .animate-on-scroll.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* تنسيق المحتوى الرئيسي */
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding-top: 100px;
-  }
-  
-  .app-logo {
-    margin-top: 50px;
-    margin-bottom: 20px;
-  }
-  
-  .heading {
-    text-align: center;
-    font-size: 50px;
-    margin: 10px 0;
-  }
-  
-  /* تنسيقات زر التحميل */
-  .button {
-    position: absolute;
-    text-align: center;
-    color: #000;
-    font-size: 50px;
-    margin: 350px 0;
-  }
-  
-  .button a {
-    display: block;
-    height: 50px;
-    width: 200px;
-    background: linear-gradient(to bottom, #00b7ea 0%, #009ec3 100%);
-    color: white;
-    font: 17px/50px Helvetica, Verdana, sans-serif;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 10px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    transition: background 0.3s ease;
-  }
-  
-  .button a:active {
-    background: linear-gradient(to bottom, #00b7ea 36%, #009ec3 100%);
-  }
-  
-  /* تنسيق الفقرات داخل الزر */
-  p {
-    background: #222;
-    display: block;
-    height: 40px;
-    width: 180px; 
-    margin: -50px 0 0 10px;
-    text-align: center;
-    font: 12px/45px Helvetica, Verdana, sans-serif;
-    color: #fff;
-    position: absolute;
-    z-index: -1;
-    border-radius: 5px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    transition: all 0.5s ease;
-  }
-  
-  /* تأثيرات عند التمرير على الزر */
-  .button:hover .top {
-    margin: -80px 0 0 10px;
-    line-height: 35px;
-  }
-  
-  .button:hover .bottom {
-    margin: -10px 0 0 10px;
-  }
-  
-  /* تنسيق الشريط العلوي */
-  .top-bar {
-    height: 70px;
-    background: none;
-    background-size: 200% 200%;
-    animation: gradient 5s ease infinite;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 20px;
-
-    position: relative;
-    z-index: 1;
-  }
-  
-  @keyframes gradient {
-    0% { background-position: left center; }
-    50% { background-position: right center; }
-    100% { background-position: left center; }
-  }
-  
-  /* قائمة الأزرار */
-  .shortcut-buttons {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .shortcut-button {
-    padding: 10px 20px;
-    background-color: transparent;
-    color: #000;
-    text-decoration: none;
-    font-size: 25px; 
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  }
-  
-  .shortcut-button:hover {
-    background-color: #ededed;
-    transform: scale(1.1);
-  }
-  
-  .shortcut-button:active {
-    transform: scale(0.96);
-  }
-  
-  /* تنسيق الشعار داخل الشريط العلوي */
-  .top-bar .logo {
-    margin-top: 10px;
-    transition: transform 0.3s ease;
-  }
-  
-  .top-bar .logo:hover {
-    transform: scale(1.1);
-  }
-  
-  /* تنسيق شريط التمرير (Ticker) */
-  .ticker-wrapper {
-    position: relative;
-    background: linear-gradient(90deg, #3d3d3d, #1a1a1a);
-    overflow: hidden;
-    height: 100px;
-    width: 80%;
-    margin: 20px auto;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    animation: ticker-bg 10s linear infinite;
-  }
-  
-  @keyframes ticker-bg {
-    0% { background-position: left center; }
-    50% { background-position: right center; }
-    100% { background-position: left center; }
-  }
-  
-  .ticker {
-    display: flex;
-    animation: scroll 20s linear infinite;
-    white-space: nowrap;
-  }
-  
-  .ticker img {
-    max-height: 60px;
-    margin: 0 20px;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
-    transition: transform 0.3s, filter 0.3s;
-  }
-  
-  .ticker img:hover {
-    transform: scale(1.2);
-    filter: drop-shadow(5px 5px 5px rgba(255, 255, 255, 0.5));
-  }
-  
-  @keyframes scroll {
-    from {
-      transform: translateX(0);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download DoVertor 3.0.0 Pro | File Conversion Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3498db;
+      --secondary: #2ecc71;
+      --dark: #2c3e50;
+      --light: #ecf0f1;
+      --accent: #f39c12;
     }
-    to {
-      transform: translateX(-50%);
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-  }
-  
-  /* أكواد قائمة الهامبورجر */
-  #menu-toggle {
-    display: none;
-  }
-  
-  .hamburger {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    user-select: none;
-    color: #000;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .shortcut-buttons {
-      display: none;
-      position: absolute;
-      top: 70px;
-      right: 20px;
-      flex-direction: column;
-      background-color: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      border-radius: 5px;
-      padding: 10px;
-      z-index: 100;
+    
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      color: var(--dark);
+      overflow-x: hidden;
     }
-    .hamburger {
-      display: block;
-    }
-    #menu-toggle:checked + .hamburger + .shortcut-buttons {
+    
+    /* Header Styles */
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      padding: 1rem 5%;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
     }
-  }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--dark);
+      cursor: pointer;
+    }
+    
+    /* Main Content */
+    main {
+      padding: 7rem 5% 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .download-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .download-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .download-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      border-radius: 20px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    }
+    
+    .app-icon i {
+      font-size: 2.5rem;
+      color: white;
+    }
+    
+    .version-badge {
+      background: var(--accent);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .description {
+      color: #7f8c8d;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+    }
+    
+    .download-btn:active {
+      transform: translateY(1px);
+    }
+    
+    .download-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .download-btn:hover::after {
+      transform: translateX(100%);
+    }
+    
+    .file-info {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #95a5a6;
+    }
+    
+    .features {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 2rem;
+    }
+    
+    .features h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: white;
+      font-size: 1.2rem;
+    }
+    
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .feature-card p {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    .qr-section {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    
+    .qr-code {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .qr-section p {
+      margin-top: 0.5rem;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem 5%;
+      margin-top: 3rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      color: #bdc3c7;
+      font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+      }
+      
+      .nav-links.active {
+        transform: translateY(0);
+      }
+      
+      .nav-links a {
+        padding: 0.8rem 0;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .download-card {
+        padding: 2rem 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 1.2rem;
+      }
+      
+      .download-card {
+        padding: 1.5rem 1rem;
+      }
+      
+      .app-icon {
+        width: 70px;
+        height: 70px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .download-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">DV</div>
+      <div class="logo-text">DoVertor</div>
+    </div>
+    
+    <nav>
+      <button class="mobile-menu-btn" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="https://omar0elmallah.github.io/tamce/">Community</a>
+        <a href="https://devhub-arabic.blogspot.com/">Blog</a>
+        <a href="https://omarelmallah.pythonanywhere.com/">AI Tools</a>
+        <a href="https://omar0elmallah.github.io/contact/">Contact</a>
+      </div>
+    </nav>
+  </header>
   
-  /* تنسيق رمز الـ QR */
-  /* الوضع الافتراضي: */
-/* تنسيق رمز الـ QR - الوضع الافتراضي على الشاشات الكبيرة */
-/* تنسيق رمز الـ QR - الوضع الافتراضي على الشاشات الكبيرة */
-.qr {
-  position: absolute;
-  top: 200px;
-  left: 10px;
-  transition: all 0.5s ease;
-}
-
-/* استهداف الصورة داخل عنصر QR */
-.qr img {
-  width: 150px;  /* الحجم الافتراضي على الشاشات الكبيرة */
-  height: auto;
-}
-
-/* عند الشاشات الصغيرة (أقل من 768px) نقوم بتعديل حجم رمز الـ QR */
-@media only screen and (max-width: 768px) {
-  .qr {
-    top: 150px;  /* تعديل الموضع إذا لزم الأمر */
-    left: 10px;  /* يبقى في الجهة اليسار */
-  }
-  /* تغيير حجم الصورة داخل الـ QR */
-  .qr img {
-    width: 80px !important; /* استخدام !important لضمان تطبيق القيمة */
-    height: auto;
-  }
-}
-
+  <main>
+    <div class="download-card animate">
+      <div class="app-icon">
+        <i class="fas fa-exchange-alt"></i>
+      </div>
+      
+      <span class="version-badge">v3.0.0 Pro</span>
+      <h1 class="animate delay-1">DoVertor Professional</h1>
+      <p class="description animate delay-1">The ultimate file conversion tool with enhanced features and performance</p>
+      
+      <a href="https://1drv.ms/u/c/f0ebc7c3a2c512fd/EerGWwmZ2_dImp827owXSF8BZYeRkXZ9JjZMqHpHbYoCcw?e=c02V9f" class="download-btn animate delay-2">
+        <i class="fas fa-download"></i> Download Now
+      </a>
+      
+      <p class="file-info animate delay-2">Version 3.0.0 | 86.6 MB (ZIP) | Updated: June 2025</p>
+    </div>
+    
+    <div class="features animate delay-3">
+      <h2>Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Lightning Fast</h3>
+          <p>Convert files in seconds with our optimized processing engine that handles even large files effortlessly.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3>100+ Formats</h3>
+          <p>Support for documents, images, audio, video, and archives with comprehensive format coverage.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>Secure Processing</h3>
+          <p>Your files are processed locally - no uploads to external servers, ensuring complete privacy.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>Advanced Options</h3>
+          <p>Customize output settings with professional-grade parameters for each file type.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="qr-section animate delay-3">
+      <div class="qr-code">
+        <img src="frame.png" alt="Scan to download" width="130" height="130">
+      </div>
+      <p>Scan to download on mobile</p>
+    </div>
+  </main>
   
+  <footer>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Support</a>
+      <a href="#">Changelog</a>
+    </div>
+    <p class="copyright">© 2025 DoVertor. All rights reserved.</p>
+  </footer>
   
-  /* تنسيق معلومات الإصدار */
-  .info {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.download-card, .features, .qr-section').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
