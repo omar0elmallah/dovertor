@@ -1,77 +1,779 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download DoVertor 3.0.0</title>
-  <link rel="stylesheet" href="sss.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoVertor Pro 3.0.0 - Advanced File Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --dark: #14213d;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --gray: #adb5bd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Main Content */
+        main {
+            padding: 8rem 5% 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Download Card */
+        .download-container {
+            width: 100%;
+            max-width: 680px;
+            perspective: 1000px;
+        }
+
+        .download-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            padding: 3rem 2.5rem;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .download-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .app-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1.8rem;
+            border-radius: 22px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .app-icon i {
+            font-size: 2.8rem;
+            color: white;
+        }
+
+        .version-tag {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), #f72585c0);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 12px rgba(247, 37, 133, 0.3);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--dark);
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            color: var(--gray);
+            margin-bottom: 2.2rem;
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.1rem 2.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(67, 97, 238, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .file-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.8rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .info-item i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 4rem;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            display: inline-block;
+            padding: 0 1.5rem;
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gray), transparent);
+            z-index: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* QR Section */
+        .qr-section {
+            margin-top: 4rem;
+            text-align: center;
+            background: white;
+            padding: 2rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .qr-container {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            padding: 12px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-section p {
+            margin-top: 1.2rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5% 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.08);
+                transition: right 0.4s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            main {
+                padding: 6rem 5% 3rem;
+            }
+
+            .download-card {
+                padding: 2.5rem 1.8rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 0.98rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .qr-section {
+                padding: 1.8rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            .download-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .app-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .app-icon i {
+                font-size: 2.4rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .download-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .file-info {
+                flex-direction: column;
+                gap: 0.6rem;
+                align-items: center;
+            }
+
+            .qr-container {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- الشريط العلوي -->
-  <div class="top-bar">
-    <!-- الشعار -->
-    <div class="logo">
-      <svg width="300" height="100" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#3498db; stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#2ecc71; stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <text x="150" y="60" font-size="40" font-family="Arial" fill="url(#grad1)" text-anchor="middle" class="neon-text">
-          Taming
-        </text>
-      </svg>
-    </div>
-    <!-- checkbox لإظهار/إخفاء القائمة في الشاشات الصغيرة -->
-    <input type="checkbox" id="menu-toggle">
-    <!-- أيقونة الهامبورجر -->
-    <label for="menu-toggle" class="hamburger">&#9776;</label>
-    <!-- قائمة الأزرار -->
-    <div class="shortcut-buttons">
-      <a href="https://omar0elmallah.github.io/tamce/" class="shortcut-button">community</a>
-      <a href="https://devhub-arabic.blogspot.com/" class="shortcut-button">blog</a>
-      <a href="https://omarelmallah.pythonanywhere.com/" class="shortcut-button">ai</a>
-      <a href=" https://omar0elmallah.github.io/contact/" class="shortcut-button">Contact</a>
-    </div>
-  </div>
-
-  <!-- محتوى الصفحة الرئيسي -->
-  <div class="container animate-on-scroll">
-    <img src="Convert-Icon.png" alt="logo" class="app-logo" width="50" height="50">
-    <h1 class="heading neon-text">download</h1>
-    <h1 class="heading neon-text">new version 3.0.0 pro </h1>
-    <div class="button">
-      <a download="dovert 3.0.0 beta" href="https://1drv.ms/u/c/f0ebc7c3a2c512fd/EerGWwmZ2_dImp827owXSF8BZYeRkXZ9JjZMqHpHbYoCcw?e=c02V9f">Download</a>
-      <p class="top">click to begin</p>
-      <p class="bottom">86.6 MB.zip</p>
-    </div>
-  </div>
-  <h5 class="info animate-on-scroll">new ver. 3.0.0 6/2025</h5>
-  
-  <!-- شريط التمرير (Ticker) -->
-
-  </div>
-  
-  <div class="qr">
-    <img src="frame.png" alt="QR Code" width="150" height="220">
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            entry.target.classList.add('in-view');
-          }
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">DV</div>
+            <div class="logo-text">DoVertor</div>
+        </div>
+        
+        <nav>
+            <button class="mobile-menu-btn" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="https://omar0elmallah.github.io/tamce/">Community</a>
+                <a href="https://devhub-arabic.blogspot.com/">Blog</a>
+                <a href="https://omarelmallah.pythonanywhere.com/">AI Tools</a>
+                <a href="https://omar0elmallah.github.io/contact/">Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="download-container animate">
+            <div class="download-card">
+                <div class="card-border"></div>
+                <div class="app-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                
+                <span class="version-tag animate delay-1">PRO VERSION 3.0.0</span>
+                <h1 class="animate delay-1">Ultimate File Conversion Solution</h1>
+                <p class="subtitle animate delay-1">Convert between 100+ formats with professional-grade quality and blazing fast performance</p>
+                
+                <a href="https://1drv.ms/u/c/f0ebc7c3a2c512fd/EerGWwmZ2_dImp827owXSF8BZYeRkXZ9JjZMqHpHbYoCcw?e=c02V9f" class="download-btn animate delay-2">
+                    <i class="fas fa-download"></i> Download Now
+                </a>
+                
+                <div class="file-info animate delay-2">
+                    <div class="info-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Updated: June 2025</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-file-archive"></i>
+                        <span>86.6 MB (ZIP)</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-windows"></i>
+                        <span>Windows 10/11</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features-section animate delay-3">
+            <div class="section-title">
+                <h2>Why Choose DoVertor Pro</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>High-Speed Processing</h3>
+                    <p>Leveraging multi-core CPU processing to handle batch conversions in record time without quality loss.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Privacy Focused</h3>
+                    <p>All processing happens locally on your device - no file uploads to external servers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Advanced Controls</h3>
+                    <p>Precise adjustment of output parameters for each format with professional presets.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>GPU Acceleration</h3>
+                    <p>Harness your graphics card power for faster video and image conversions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Batch Processing</h3>
+                    <p>Convert entire folders with complex structures while maintaining directory hierarchy.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3>No Watermarks</h3>
+                    <p>Professional version removes all watermarks from output files.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="qr-section animate delay-4">
+            <div class="qr-container">
+                <img src="frame.png" alt="Scan to download" width="136" height="136">
+            </div>
+            <p>Scan QR code to download on mobile devices</p>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p class="copyright">© 2025 DoVertor Pro. All rights reserved.<br>Version 3.0.0 (Build 2025.06.15)</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-      }, { threshold: 0.2 });
-      
-      document.querySelectorAll('.animate-on-scroll').forEach(element => {
-        observer.observe(element);
-      });
-    });
-  </script>
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
 </body>
 </html>
-
